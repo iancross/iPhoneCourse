@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1bs-km-qm8">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Split View Controller-->
+        <scene sceneID="Fnj-ju-UQq">
+            <objects>
+                <splitViewController id="1bs-km-qm8" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="uEA-jH-Wxr" kind="relationship" relationship="masterViewController" id="zE0-gp-5ha"/>
+                        <segue destination="Obm-b1-XyR" kind="relationship" relationship="detailViewController" id="Orv-Oh-FdI"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7hM-Xg-caD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2083" y="-725"/>
+        </scene>
+        <!--Face View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="FaceViewController" customModule="FaceIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="2W1-yv-eEZ">
+                                <rect key="frame" x="190" y="557" width="220" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="216" id="y1w-YV-6ca"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="changeThickness:" destination="BYZ-38-t0r" eventType="valueChanged" id="739-aY-1Pw"/>
+                                </connections>
+                            </slider>
+                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VHW-4w-Q1I" customClass="FaceView" customModule="FaceIt" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="549"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="scale">
+                                        <real key="value" value="0.69999999999999996"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="mouthCurvature">
+                                        <real key="value" value="-0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="eyesOpen" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="aX0-2z-4ND" appends="YES" id="ZED-6a-QDb"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VHW-4w-Q1I" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="B4s-q4-huU"/>
+                            <constraint firstItem="VHW-4w-Q1I" firstAttribute="centerX" secondItem="2W1-yv-eEZ" secondAttribute="centerX" id="EiN-A9-dvG"/>
+                            <constraint firstAttribute="trailing" secondItem="VHW-4w-Q1I" secondAttribute="trailing" id="Fq4-xh-SGT"/>
+                            <constraint firstItem="2W1-yv-eEZ" firstAttribute="top" secondItem="VHW-4w-Q1I" secondAttribute="bottom" constant="8" symbolic="YES" id="WrL-h6-fKO"/>
+                            <constraint firstItem="VHW-4w-Q1I" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="j2I-ob-whJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2W1-yv-eEZ" secondAttribute="bottom" constant="13" id="t9e-ag-EKB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="UId-AU-tyI"/>
+                    <connections>
+                        <outlet property="faceView" destination="VHW-4w-Q1I" id="kpS-i2-ptf"/>
+                        <outlet property="lineThicknessSlider" destination="2W1-yv-eEZ" id="DyD-Tp-ThT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="aX0-2z-4ND">
+                    <connections>
+                        <action selector="toggleEyes:" destination="BYZ-38-t0r" id="BNN-Mq-VRc"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-104" y="346"/>
+        </scene>
+        <!--Emotions-->
+        <scene sceneID="op8-aG-arf">
+            <objects>
+                <viewController id="mGU-SC-Rou" customClass="EmotionsViewController" customModule="FaceIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E1A-Eo-sUt"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vpq-kw-l4u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CeZ-rR-75U">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zdv-1d-Q4h">
+                                <rect key="frame" x="265" y="259" width="70" height="82"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4w-fi-VW3">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="Happy"/>
+                                        <connections>
+                                            <segue destination="Obm-b1-XyR" kind="showDetail" identifier="happy" id="Xqw-gT-fZV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Fs-a7-Guw">
+                                        <rect key="frame" x="3" y="41" width="64" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="Angry"/>
+                                        <connections>
+                                            <segue destination="Obm-b1-XyR" kind="showDetail" identifier="angry" id="wwC-Fj-wRu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zdv-1d-Q4h" firstAttribute="centerY" secondItem="CeZ-rR-75U" secondAttribute="centerY" id="zPf-GC-Bj8"/>
+                            <constraint firstItem="zdv-1d-Q4h" firstAttribute="centerX" secondItem="CeZ-rR-75U" secondAttribute="centerX" id="zVA-24-n3C"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Emotions" id="oB8-dm-diF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SO8-6v-xFA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-490" y="-692"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="UIc-TA-gkZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uEA-jH-Wxr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="3r1-Rv-Qwb"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JvN-Hs-5LK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mGU-SC-Rou" kind="relationship" relationship="rootViewController" id="pV5-qt-2me"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MOV-wJ-cIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1308" y="-710"/>
+        </scene>
+        <!--FaceView-->
+        <scene sceneID="zhd-GA-G6G">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Obm-b1-XyR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="FaceView" id="cRh-T6-y9c"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="S9E-ax-eBJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="BCj-Sj-YMa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ry9-mN-zMQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-916" y="346"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Xqw-gT-fZV"/>
+    </inferredMetricsTieBreakers>
+</document>
